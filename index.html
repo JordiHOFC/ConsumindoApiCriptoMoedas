@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consumindo dados CoinMarketCap</title>
+</head>
+<body>
+    <script type="text/javascript">
+        //aqui coloco a chave para ter acesso a api do Coin Market cap
+        var apiKey={
+            key: '29fba324-d899-4e87-ae90-6c97c10a5cf1'
+        }
+        //agora para fazer a requisição utilizaremos as fetch
+
+        //fectch permite a gente a fazer requisições HTTP, como POST,GET e outros 
+        fetch('https://pro-api.coinmarketcap.com/v1/cryptocurrency/map?CMC_PRO_API_KEY='+apiKey.key).then
+        ((reponse)=>{
+            if(!response.ok) throw new Error('Error em executar a requisicao, status: '+response.status);
+            return response.json();
+        }).then((api)=>{
+            console.log(api)
+        }).catch((error)=>{
+            console.error(error.message);
+        })
+    </script>
+</body>
+</html>
